@@ -1,4 +1,4 @@
-package sigrun;
+package sigrun.common;
 
 public class SEGYParser {
 
