@@ -5,9 +5,6 @@ import org.junit.Test;
 import sigrun.common.BinaryHeader;
 import sigrun.common.DataSample;
 
-/**
- * Created by maksenov on 01/12/14.
- */
 public class BinaryHeaderReaderTest {
     private static final byte[] SERIALIZED_HEADER = new byte[]{
             0x00, 0x00, 0x00, 0x01, /* Job identification number 0x00000001 */

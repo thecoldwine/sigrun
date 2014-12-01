@@ -1,7 +1,10 @@
 package sigrun.converters;
 
+import java.util.Arrays;
+
 public final class ByteANumberConverter {
     private static final int BYTE = 0x000000FF;
+    private static final int LENGTH_32 = 4;
 
     /**
      * Converts a range of byte array to unsigned short (Integer in Java).
@@ -172,5 +175,19 @@ public final class ByteANumberConverter {
         index += Integer.SIZE / 8 + offset;
 
         return result;
+    }
+
+    public static float byteAToFloatIEEE754(byte[] buffer, int offset) {
+        if (buffer.length < (offset + LENGTH_32)) {
+            throw new IndexOutOfBoundsException();
+        }
+
+        byte[] number = Arrays.copyOfRange(buffer, offset, LENGTH_32);
+        int b1 = BYTE & number[offset];
+        int b2 = BYTE & number[offset + 1];
+        int b3 = BYTE & number[offset + 2];
+        int b4 = BYTE & number[offset + 3];
+
+        return (float) (b1 << 24 | b2 << 16 | b3 << 8 | b4);
     }
 }
