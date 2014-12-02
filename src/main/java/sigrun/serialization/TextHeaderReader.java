@@ -1,5 +1,7 @@
 package sigrun.serialization;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import sigrun.common.TextHeader;
 
 import java.nio.charset.Charset;
@@ -7,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TextHeaderReader {
+    private final static Logger log = LogManager.getLogger(TextHeaderReader.class.getName());
+
     public final Charset charset;
 
     public TextHeaderReader(Charset charset) {

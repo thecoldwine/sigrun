@@ -1,12 +1,21 @@
-package sigrun.common;
+package sigrun;
 
+import org.apache.logging.log4j.LogManager;
+import sigrun.common.BinaryHeader;
+import sigrun.common.SEGYModel;
+import sigrun.common.TextHeader;
+import sigrun.common.TraceHeader;
 import sigrun.serialization.*;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.nio.charset.Charset;
 
+import org.apache.logging.log4j.Logger;
+
 public class SEGYReader {
+    private final static Logger log = LogManager.getLogger(SEGYReader.class.getName());
+
     private final TextHeaderReader textHeaderReader;
     private final BinaryHeaderReader binaryHeaderReader;
     private final TraceHeaderReader traceHeaderReader;
@@ -18,7 +27,7 @@ public class SEGYReader {
     }
 
     public TextHeader readTextHeader(BufferedInputStream is) throws SEGYFormatException, IOException {
-        final byte[] buffer = new byte[TextHeader.TEXT_HEADER_SIZE];
+        byte[] buffer = new byte[TextHeader.TEXT_HEADER_SIZE];
 
         if (is.read(buffer, 0, TextHeader.TEXT_HEADER_SIZE) < 0) {
             throw new SEGYFormatException("Cannot read text header, unexpected EOF.");
@@ -28,9 +37,9 @@ public class SEGYReader {
     }
 
     public BinaryHeader readBinaryHeader(BufferedInputStream is) throws SEGYFormatException, IOException {
-        final byte[] buffer = new byte[BinaryHeader.BIN_HEADER_LENGTH];
+        byte[] buffer = new byte[BinaryHeader.BIN_HEADER_LENGTH];
 
-        if (is.read(buffer, TextHeader.TEXT_HEADER_SIZE, BinaryHeader.BIN_HEADER_LENGTH) < 0) {
+        if (is.read(buffer, 0, BinaryHeader.BIN_HEADER_LENGTH) < 0) {
             throw new SEGYFormatException("Cannot read binary header, unexpected EOF.");
         }
 
@@ -41,32 +50,33 @@ public class SEGYReader {
         final SEGYModel segy = new SEGYModel();
 
         segy.setTextHeader(readTextHeader(is));
+        log.info("Text header has been read successfully");
 
         final BinaryHeader binHeader = readBinaryHeader(is);
         segy.setBinaryHeader(binHeader);
+        log.info("Binary header has been read successfully");
 
-        int offset = TextHeader.TEXT_HEADER_SIZE + BinaryHeader.BIN_HEADER_LENGTH;
         final int sampleSize = binHeader.getDataSampleCode().getSize();
-        long read;
+        log.info(String.format("Sample size is %d", sampleSize));
 
         while (true) {
             byte[] buffer = new byte[TraceHeader.TRACE_HEADER_LENGTH];
-            if (is.read(buffer, offset, TraceHeader.TRACE_HEADER_LENGTH) < 0) {
+            if (is.read(buffer, 0, TraceHeader.TRACE_HEADER_LENGTH) < 0) {
                 break;
             }
 
             final TraceHeader header = traceHeaderReader.read(buffer);
             segy.addTraceHeader(header);
-
             final int skipLength = sampleSize * header.getNumberOfSamples();
-            read = is.skip(skipLength);
 
-            if (read < 0) {
+            if (is.read(new byte[skipLength]) < 0) {
                 throw new SEGYFormatException("Incorrect information in file, unexpected EOF");
             }
 
-            offset += TraceHeader.TRACE_HEADER_LENGTH + read;
+            log.trace(String.format("Trace header has been read. (%d, %d)", header.getSourceX(), header.getSourceY()));
         }
+
+        log.trace("File ended");
 
         return segy;
     }
