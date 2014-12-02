@@ -1,8 +1,12 @@
 package sigrun.converters;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.Arrays;
 
 public final class ByteANumberConverter {
+    private static final Logger log = LogManager.getLogger(ByteANumberConverter.class.getName());
     private static final int BYTE = 0x000000FF;
     private static final int LENGTH_32 = 4;
 

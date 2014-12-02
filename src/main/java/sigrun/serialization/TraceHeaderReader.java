@@ -1,5 +1,7 @@
 package sigrun.serialization;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import sigrun.common.CoordinateUnitsCode;
 import sigrun.common.GainTypeForInstruments;
 import sigrun.common.TraceHeader;
@@ -10,6 +12,8 @@ import java.util.Arrays;
 import static sigrun.converters.ByteANumberConverter.*;
 
 public class TraceHeaderReader {
+    private final static Logger log = LogManager.getLogger(TraceHeaderReader.class.getName());
+
     public final TraceHeaderFormat format;
 
     public TraceHeaderReader(TraceHeaderFormat format) {
@@ -232,11 +236,15 @@ public class TraceHeaderReader {
         if (format.overTravelFormat != null)
             traceHeader.setOverTravel(byteAToShort(buffer, format.overTravelFormat.posStart));
 
-        if (format.xOfCDPPositionFormat != null)
+        if (format.xOfCDPPositionFormat != null) {
+            log.trace("Setting xOfCDPPositionFormat");
             traceHeader.setxOfCDPPosition(byteAToInt(buffer, format.xOfCDPPositionFormat.posStart));
+        }
 
-        if (format.yOfCDPPositionFormat != null)
+        if (format.yOfCDPPositionFormat != null) {
+            log.trace("Setting yOfCDPPositionFormat");
             traceHeader.setyOfCDPPosition(byteAToInt(buffer, format.yOfCDPPositionFormat.posStart));
+        }
 
         if (format.inLineNumberFormat != null)
             traceHeader.setInLineNumber(byteAToInt(buffer, format.inLineNumberFormat.posStart));

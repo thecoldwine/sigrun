@@ -3,12 +3,12 @@ package sigrun.common;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SegYModel {
+public class SEGYModel {
     private TextHeader textHeader;
     private BinaryHeader binaryHeader;
     private final List<TraceHeader> traceHeaders;
 
-    public SegYModel() {
+    public SEGYModel() {
         traceHeaders = new ArrayList<TraceHeader>();
     }
 
