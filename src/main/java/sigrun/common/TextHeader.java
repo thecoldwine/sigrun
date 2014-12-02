@@ -1,5 +1,6 @@
 package sigrun.common;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TextHeader {
@@ -14,7 +15,9 @@ public class TextHeader {
     }
 
     public TextHeader(final List<String> contents) {
-        this.contents = contents;
+        this.contents = new ArrayList<String>();
+
+        assert this.contents.addAll(contents);
         assert contents.size() == RECORDS_AMOUNT;
     }
 }
