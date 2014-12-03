@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
 
+@SuppressWarnings("UnusedDeclaration")
 public final class ByteANumberConverter {
     private static final Logger log = LogManager.getLogger(ByteANumberConverter.class.getName());
     private static final int BYTE = 0x000000FF;
@@ -111,6 +112,7 @@ public final class ByteANumberConverter {
      *                                   <p/>
      *                                   <b>Note: there are no exception if index will be greater than source length!</b>
      */
+    @SuppressWarnings("UnusedAssignment")
     public static short byteAToShort(final byte[] source, final int offset, Integer index) {
         if (index == null)
             throw new NullPointerException("Index cannot be null");
@@ -168,6 +170,7 @@ public final class ByteANumberConverter {
      * @throws NullPointerException      if source array is null or index is null
      * @throws IllegalArgumentException  if offset less than zero or index less than zero
      */
+    @SuppressWarnings("UnusedAssignment")
     public static int byteAToInt(final byte[] source, final int offset, Integer index) {
         if (index == null)
             throw new NullPointerException("Index cannot be null");

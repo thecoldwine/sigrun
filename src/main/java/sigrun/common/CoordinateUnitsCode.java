@@ -1,5 +1,6 @@
 package sigrun.common;
 
+@SuppressWarnings("UnusedDeclaration")
 public enum CoordinateUnitsCode {
     UNDEFINED((short) 0, "Undefined"),
     LENGTH((short) 1, "Meters or feet"),

@@ -8,6 +8,7 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 import java.io.IOException;
 import java.io.OutputStream;
 
+@SuppressWarnings({"WeakerAccess", "UnusedDeclaration"})
 public class NavigationStrategy extends ReportStrategy {
     public static final int ESTIMATED_STRING_LENGTH = 512;
 
@@ -30,21 +31,8 @@ public class NavigationStrategy extends ReportStrategy {
 
     @Override
     public void processTraceHeader(TraceHeader traceHeader, OutputStream outputStream) throws IOException {
-        StringBuilder builder = new StringBuilder(ESTIMATED_STRING_LENGTH);
-        builder.append(binaryHeader.getLineNumber());
-        builder.append(getSeparator());
-        builder.append(traceHeader.getCrossLineNumber());
-        builder.append(getSeparator());
-        builder.append(traceHeader.getInLineNumber());
-        builder.append(getSeparator());
-        builder.append(traceHeader.getShotpointNumber());
-        builder.append(getSeparator());
-        builder.append(traceHeader.getSourceX());
-        builder.append(getSeparator());
-        builder.append(traceHeader.getSourceY());
-        builder.append(System.getProperty("line.separator"));
 
-        outputStream.write(builder.toString().getBytes("UTF-8"));
+        outputStream.write((String.valueOf(binaryHeader.getLineNumber()) + getSeparator() + traceHeader.getCrossLineNumber() + getSeparator() + traceHeader.getInLineNumber() + getSeparator() + traceHeader.getShotpointNumber() + getSeparator() + traceHeader.getSourceX() + getSeparator() + traceHeader.getSourceY() + System.getProperty("line.separator")).getBytes("UTF-8"));
     }
 
     @Override

@@ -5,8 +5,11 @@ import sigrun.common.TraceHeader;
 import java.io.IOException;
 import java.io.OutputStream;
 
+@SuppressWarnings("UnusedDeclaration")
 public class PetrobankNavigationStrategy extends ReportStrategy {
+    @SuppressWarnings("WeakerAccess")
     protected static final String NAVIGATION_FORMAT = "%s %-12d %-12d %-12d %-12d %-12d%n";
+    @SuppressWarnings("WeakerAccess")
     protected static final String RECORD_PREFIX = "R";
     private int counter = 1;
 

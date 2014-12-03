@@ -3,7 +3,6 @@ package sigrun;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import sigrun.common.SEGYModel;
-import sigrun.common.TextHeader;
 import sigrun.serialization.*;
 
 import java.io.BufferedInputStream;
@@ -12,8 +11,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.charset.Charset;
 
+@SuppressWarnings("WeakerAccess")
 public class SEGYReaderTest {
-    private static Logger log = LogManager.getLogger(SEGYReaderTest.class.getName());
+    private static final Logger log = LogManager.getLogger(SEGYReaderTest.class.getName());
 
     public static BinaryHeaderFormat makeBinHeaderFormat() {
         return BinaryHeaderFormatBuilder.aBinaryHeaderFormat()

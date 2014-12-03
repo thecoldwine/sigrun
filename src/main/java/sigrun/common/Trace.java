@@ -1,5 +1,6 @@
 package sigrun.common;
 
+@SuppressWarnings("UnusedDeclaration")
 public class Trace {
 
     private final Long traceHeaderPosition;

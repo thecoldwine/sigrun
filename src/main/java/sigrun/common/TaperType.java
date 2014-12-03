@@ -1,5 +1,6 @@
 package sigrun.common;
 
+@SuppressWarnings("UnusedDeclaration")
 public enum TaperType {
     UNDEFINED((short) 0, "Undefined"),
     LINEAR((short) 1, "Linear"),

@@ -1,5 +1,6 @@
 package sigrun.common;
 
+@SuppressWarnings("UnusedDeclaration")
 public enum SweepTypeCode {
     UNDEFINED((short) 0, "Undefined"),
     LINEAR((short) 1, "Linear"),

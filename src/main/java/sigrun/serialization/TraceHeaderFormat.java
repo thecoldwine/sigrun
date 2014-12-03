@@ -264,7 +264,7 @@ public class TraceHeaderFormat {
 
 
     public void validate() {
-        final FormatEntry[] mandatoryFields = {};
+        final FormatEntry[] mandatoryFields = { numberOfSamplesFormat };
 
         for (FormatEntry e : mandatoryFields) {
             if (e == null) {

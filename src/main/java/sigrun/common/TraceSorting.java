@@ -1,5 +1,6 @@
 package sigrun.common;
 
+@SuppressWarnings("UnusedDeclaration")
 public enum TraceSorting {
     OTHER((short) -1, "Other"),
     UNKNOWN((short) 0, "Unknown"),

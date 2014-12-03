@@ -1,5 +1,6 @@
 package sigrun.common;
 
+@SuppressWarnings("UnusedDeclaration")
 public enum DataSample {
     IBM_FP((short) 1, "4 byte IBM floating point", 4),
     TC_4B_I((short) 2, "4 byte, two's complement integer", 4),

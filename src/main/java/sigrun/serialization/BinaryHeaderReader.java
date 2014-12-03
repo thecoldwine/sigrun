@@ -4,6 +4,7 @@ import sigrun.common.*;
 
 import static sigrun.converters.ByteANumberConverter.*;
 
+@SuppressWarnings({"WeakerAccess", "ConstantConditions"})
 public class BinaryHeaderReader {
     public final BinaryHeaderFormat format;
 
