@@ -8,9 +8,11 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("UnusedDeclaration")
 public class TextHeaderReader {
     private final static Logger log = LogManager.getLogger(TextHeaderReader.class.getName());
 
+    @SuppressWarnings("WeakerAccess")
     public final Charset charset;
 
     public TextHeaderReader(Charset charset) {

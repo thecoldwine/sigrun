@@ -1,5 +1,6 @@
 package sigrun.serialization;
 
+@SuppressWarnings({"WeakerAccess", "UnusedDeclaration"})
 public class TraceHeaderFormatBuilder {
     public FormatEntry traceSequenceNumberWLFormat;
     public FormatEntry traceSequenceNumberWSFormat;

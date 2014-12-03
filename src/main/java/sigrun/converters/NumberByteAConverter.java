@@ -1,5 +1,6 @@
 package sigrun.converters;
 
+@SuppressWarnings("WeakerAccess")
 public final class NumberByteAConverter {
     public static byte[] intToByteA(int source) {
         byte[] destination = new byte[Integer.SIZE / 8];

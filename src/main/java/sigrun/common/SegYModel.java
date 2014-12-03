@@ -3,6 +3,7 @@ package sigrun.common;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("UnusedDeclaration")
 public class SEGYModel {
     private TextHeader textHeader;
     private BinaryHeader binaryHeader;

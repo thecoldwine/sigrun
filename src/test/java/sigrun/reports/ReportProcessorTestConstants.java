@@ -1,5 +1,6 @@
 package sigrun.reports;
 
+@SuppressWarnings("UnusedDeclaration")
 interface ReportProcessorTestConstants {
     byte[] TEST_DATA = new byte[]{
             0x40, 0x40, 0x40, 0x40, 0x40, 0x40, 0x40, 0x40, 0x40, 0x40,

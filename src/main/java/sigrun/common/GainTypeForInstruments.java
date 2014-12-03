@@ -1,5 +1,6 @@
 package sigrun.common;
 
+@SuppressWarnings("UnusedDeclaration")
 public enum GainTypeForInstruments {
     UNDEFINED((short) 0, "Undefined"),
     FIXED((short) 1, "Fixed"),

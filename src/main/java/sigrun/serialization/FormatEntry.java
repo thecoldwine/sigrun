@@ -5,7 +5,7 @@ public class FormatEntry {
     public final int posEnd;
 
 
-    public FormatEntry(int posStart, int posEnd) {
+    private FormatEntry(int posStart, int posEnd) {
         this.posStart = posStart;
         this.posEnd = posEnd;
     }

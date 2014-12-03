@@ -5,6 +5,7 @@ import sigrun.common.TraceHeader;
 import java.io.IOException;
 import java.io.OutputStream;
 
+@SuppressWarnings("UnusedDeclaration")
 public class TestStrategy extends ReportStrategy {
     @Override
     public void processTraceHeader(TraceHeader traceHeader, OutputStream outputStream) throws IOException {

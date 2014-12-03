@@ -6,6 +6,7 @@ import org.apache.logging.log4j.Logger;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("UnusedDeclaration")
 public class TextHeader {
     private static final Logger log = LogManager.getLogger(TextHeader.class.getName());
 

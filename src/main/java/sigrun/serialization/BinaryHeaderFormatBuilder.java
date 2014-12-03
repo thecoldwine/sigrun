@@ -1,5 +1,6 @@
 package sigrun.serialization;
 
+@SuppressWarnings({"WeakerAccess", "UnusedDeclaration"})
 public class BinaryHeaderFormatBuilder {
     private FormatEntry jobIdFormat;
     private FormatEntry lineNumberFormat;

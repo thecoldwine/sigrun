@@ -11,9 +11,11 @@ import java.util.Arrays;
 
 import static sigrun.converters.ByteANumberConverter.*;
 
+@SuppressWarnings("ConstantConditions")
 public class TraceHeaderReader {
     private final static Logger log = LogManager.getLogger(TraceHeaderReader.class.getName());
 
+    @SuppressWarnings("WeakerAccess")
     public final TraceHeaderFormat format;
 
     public TraceHeaderReader(TraceHeaderFormat format) {

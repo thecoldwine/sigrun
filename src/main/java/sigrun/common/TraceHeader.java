@@ -2,6 +2,7 @@ package sigrun.common;
 
 import java.util.Arrays;
 
+@SuppressWarnings({"RedundantIfStatement", "UnusedDeclaration", "ConstantConditions"})
 public class TraceHeader {
     @Reportable(value = "Position In File")
     private transient long positionInFile = -1;
@@ -548,7 +549,7 @@ public class TraceHeader {
     @Reportable(value = "Device Trace Identifier", startPosition = 212, endPosition = 214)
     private Short deviceTraceIdentifier;
     /**
-     * Scalar to be applied to times speciffied in Trace Header bytes 95-114 to give the true time value in milliseconds.
+     * Scalar to be applied to times specified in Trace Header bytes 95-114 to give the true time value in milliseconds.
      * Scalar = 1, +10, +100, +1000, or +10000. If positive, scalar is used as a multiplier; if negative, scalar used as
      * divisor. A value of zero is assumed to be a scalar value of 1.
      */

@@ -3,6 +3,7 @@ package sigrun.common;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings({"WeakerAccess", "UnusedDeclaration"})
 public class SEGYData {
     private List<TextHeader> textHeaders = new ArrayList<TextHeader>();
     private BinaryHeader binaryHeader;

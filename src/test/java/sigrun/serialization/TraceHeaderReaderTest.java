@@ -1,14 +1,10 @@
 package sigrun.serialization;
 
-import org.junit.Test;
-
+@SuppressWarnings({"UnusedDeclaration", "WeakerAccess"})
 public class TraceHeaderReaderTest {
+    @SuppressWarnings("MismatchedReadAndWriteOfArray")
     private static final byte[] SERIALIZED_HEADER = new byte[]{
             0x00, 0x00,
     };
 
-    @Test
-    public void testRead() {
-
-    }
 }
