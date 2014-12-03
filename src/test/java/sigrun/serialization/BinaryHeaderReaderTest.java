@@ -89,7 +89,7 @@ public class BinaryHeaderReaderTest {
 
         BinaryHeader header = reader.read(SERIALIZED_HEADER);
 
-        Assert.assertEquals(new Integer(1), header.getJobId());
+        Assert.assertEquals(Integer.valueOf(1), header.getJobId());
         Assert.assertEquals((short) 6, header.getSampleInterval());
         Assert.assertEquals(DataSample.create((short) 1), header.getDataSampleCode());
     }

@@ -27,7 +27,6 @@ public class SEGYReader {
         this.traceHeaderReader = new TraceHeaderReader(thf);
     }
 
-    @SuppressWarnings("WeakerAccess")
     public TextHeader readTextHeader(BufferedInputStream is) throws SEGYFormatException, IOException {
         byte[] buffer = new byte[TextHeader.TEXT_HEADER_SIZE];
 
@@ -38,7 +37,6 @@ public class SEGYReader {
         return textHeaderReader.read(buffer);
     }
 
-    @SuppressWarnings("WeakerAccess")
     public BinaryHeader readBinaryHeader(BufferedInputStream is) throws SEGYFormatException, IOException {
         byte[] buffer = new byte[BinaryHeader.BIN_HEADER_LENGTH];
 
