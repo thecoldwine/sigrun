@@ -122,8 +122,6 @@ public class BinaryHeader {
     * */
     @Reportable(value = "Vibratory Polarity Code", startPosition = 58, endPosition = 60)
     private short vibratoryPolarityCode;
-    /* 3261 - 3500 */
-    private byte[] unassignedGap;
     /* SEG Y Format Revision Number. This is a 16-bit unsigned value with a Q-point between the first and second
     * bytes. Thus for SEG Y Revision 1.0, as defined in this document, this will be recorded as 0100(16). This field
     * is mandatory for all versions of SEG Y, although a value of zero indicates "traditional" SEG Y conforming to the
@@ -150,8 +148,6 @@ public class BinaryHeader {
     * */
     @Reportable(value = "Number Of 3200 Byte", startPosition = 304, endPosition = 306)
     private short numberOf3200Byte;
-    /* 3507 - 3600 */
-    private byte[] unassignedGap2;
 
     public Integer getJobId() {
         return jobId;
@@ -423,11 +419,8 @@ public class BinaryHeader {
                 "\nmeasurementSystem           " + measurementSystem +
                 "\nimpulseSignalPolarity       " + impulseSignalPolarity +
                 "\nvibratoryPolarityCode       " + vibratoryPolarityCode +
-                "\nunassignedGap               " + Arrays.toString(unassignedGap) +
                 "\nsegyFormatRevNumber         " + segyFormatRevNumber +
                 "\nfixedLengthTraceFlag        " + fixedLengthTraceFlag +
-                "\nnumberOf3200Byte            " + numberOf3200Byte +
-                "\nunassignedGap2              " + Arrays.toString(unassignedGap2) +
-                '}';
+                "\nnumberOf3200Byte            " + numberOf3200Byte + '}';
     }
 }

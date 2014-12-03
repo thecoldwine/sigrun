@@ -97,35 +97,6 @@ public final class ByteANumberConverter {
         return (short) (firstByte << 8 | secondByte);
     }
 
-    /**
-     * Converts a range of bytes to signed short (Short in Java) with the changing of index values (for length of Short
-     * type in bytes).
-     *
-     * @param source - source array of bytes
-     * @param offset - offset for start of reading the value
-     * @param index  - pointer to by steps next after number bytes;
-     *               This one computes as <code>offset + Short.SIZE / 8</code>
-     * @return short value
-     * @throws IndexOutOfBoundsException if offset + Short.SIZE greater than <b>source.length</b> value.
-     * @throws NullPointerException      if source array is null or index value is null.
-     * @throws IllegalArgumentException  if offset less than zero or index less than zero
-     *                                   <p/>
-     *                                   <b>Note: there are no exception if index will be greater than source length!</b>
-     */
-    @SuppressWarnings("UnusedAssignment")
-    public static short byteAToShort(final byte[] source, final int offset, Integer index) {
-        if (index == null)
-            throw new NullPointerException("Index cannot be null");
-
-        if (index < 0)
-            throw new IllegalArgumentException("Index cannot be less than zero");
-
-        short result = byteAToShort(source, offset);
-        index += Short.SIZE / 8 + offset;
-
-        return result;
-    }
-
 
     /**
      * Converts a range of byte array to signed int (Integer in Java)
@@ -155,33 +126,6 @@ public final class ByteANumberConverter {
         int fourthByte = BYTE & source[offset + 3];
 
         return (firstByte << 24 | secondByte << 16 | thirdByte << 8 | fourthByte);
-    }
-
-    /**
-     * Convert a range of byte array to signed int (Integer in Java)
-     *
-     * @param source - source array of bytes
-     * @param offset - offset for start of reading of value
-     * @param index  - pointer to byte steps next after number bytes;
-     *               This one computes as <code>offset + Integer.SIZE / 8</code>
-     * @return int value
-     * @throws IndexOutOfBoundsException if offset + Integer.SIZE greater than
-     *                                   <b>source.length</b> value.
-     * @throws NullPointerException      if source array is null or index is null
-     * @throws IllegalArgumentException  if offset less than zero or index less than zero
-     */
-    @SuppressWarnings("UnusedAssignment")
-    public static int byteAToInt(final byte[] source, final int offset, Integer index) {
-        if (index == null)
-            throw new NullPointerException("Index cannot be null");
-
-        if (index < 0)
-            throw new IllegalArgumentException("Index cannot be less than zero");
-
-        int result = byteAToInt(source, offset);
-        index += Integer.SIZE / 8 + offset;
-
-        return result;
     }
 
     public static float byteAToFloatIEEE754(byte[] buffer, int offset) {
