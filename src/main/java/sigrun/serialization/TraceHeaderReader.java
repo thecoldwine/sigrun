@@ -1,7 +1,7 @@
 package sigrun.serialization;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import sigrun.common.CoordinateUnitsCode;
 import sigrun.common.GainTypeForInstruments;
 import sigrun.common.TraceHeader;
@@ -13,7 +13,7 @@ import static sigrun.converters.ByteANumberConverter.*;
 
 @SuppressWarnings("ConstantConditions")
 public class TraceHeaderReader {
-    private final static Logger log = LogManager.getLogger(TraceHeaderReader.class.getName());
+    private final static Logger log = LoggerFactory.getLogger(TraceHeaderReader.class.getName());
 
     @SuppressWarnings("WeakerAccess")
     public final TraceHeaderFormat format;

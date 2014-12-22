@@ -1,6 +1,7 @@
 package sigrun;
 
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import sigrun.common.BinaryHeader;
 import sigrun.common.SEGYModel;
 import sigrun.common.TextHeader;
@@ -11,11 +12,10 @@ import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.nio.charset.Charset;
 
-import org.apache.logging.log4j.Logger;
 
 @SuppressWarnings("WeakerAccess")
 public class SEGYReader {
-    private final static Logger log = LogManager.getLogger(SEGYReader.class.getName());
+    private final static Logger log = LoggerFactory.getLogger(SEGYReader.class.getName());
 
     private final TextHeaderReader textHeaderReader;
     private final BinaryHeaderReader binaryHeaderReader;

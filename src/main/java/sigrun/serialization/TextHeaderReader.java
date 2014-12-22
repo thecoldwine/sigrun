@@ -1,7 +1,7 @@
 package sigrun.serialization;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import sigrun.common.TextHeader;
 
 import java.nio.charset.Charset;
@@ -10,7 +10,7 @@ import java.util.List;
 
 @SuppressWarnings("UnusedDeclaration")
 public class TextHeaderReader {
-    private final static Logger log = LogManager.getLogger(TextHeaderReader.class.getName());
+    private final static Logger log = LoggerFactory.getLogger(TextHeaderReader.class.getName());
 
     @SuppressWarnings("WeakerAccess")
     public final Charset charset;
