@@ -1,13 +1,13 @@
 package sigrun.converters;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Arrays;
 
 @SuppressWarnings("UnusedDeclaration")
 public final class ByteANumberConverter {
-    private static final Logger log = LogManager.getLogger(ByteANumberConverter.class.getName());
+    private static final Logger log = LoggerFactory.getLogger(ByteANumberConverter.class.getName());
     private static final int BYTE = 0x000000FF;
     private static final int LENGTH_32 = 4;
 
