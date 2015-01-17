@@ -1,7 +1,7 @@
 package sigrun;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import sigrun.common.SEGYModel;
 import sigrun.serialization.*;
 
@@ -13,7 +13,7 @@ import java.nio.charset.Charset;
 
 @SuppressWarnings("WeakerAccess")
 public class SEGYReaderTest {
-    private static final Logger log = LogManager.getLogger(SEGYReaderTest.class.getName());
+    private static final Logger log = LoggerFactory.getLogger(SEGYReaderTest.class.getName());
 
     public static BinaryHeaderFormat makeBinHeaderFormat() {
         return BinaryHeaderFormatBuilder.aBinaryHeaderFormat()

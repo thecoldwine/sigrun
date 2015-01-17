@@ -3,6 +3,8 @@ package sigrun.converters;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.nio.ByteBuffer;
+import java.nio.ShortBuffer;
 import java.util.Arrays;
 
 @SuppressWarnings("UnusedDeclaration")
@@ -82,21 +84,13 @@ public final class ByteANumberConverter {
      */
     public static short byteAToShort(byte[] source, int offset) {
         if (source == null)
-            throw new NullPointerException("Source cannot be null");
+            throw new IllegalArgumentException("Source cannot be null");
 
         if (offset < 0)
             throw new IllegalArgumentException("Offset cannot be less than zero");
 
-        final long size = source.length;
-        if ((offset + 1) >= size)
-            throw new IndexOutOfBoundsException("Can't get short number from this array with this offset");
-
-        int firstByte = BYTE & source[offset];
-        int secondByte = BYTE & source[offset + 1];
-
-        return (short) (firstByte << 8 | secondByte);
+        return ByteBuffer.wrap(source, offset, Short.BYTES).getShort();
     }
-
 
     /**
      * Converts a range of byte array to signed int (Integer in Java)
@@ -116,29 +110,16 @@ public final class ByteANumberConverter {
         if (offset < 0)
             throw new IllegalArgumentException("Offset cannot be less than zero");
 
-        final long size = source.length;
-        if ((offset + 3) >= size)
-            throw new IndexOutOfBoundsException("Can't get int number from this array with this offset");
-
-        int firstByte = BYTE & source[offset];
-        int secondByte = BYTE & source[offset + 1];
-        int thirdByte = BYTE & source[offset + 2];
-        int fourthByte = BYTE & source[offset + 3];
-
-        return (firstByte << 24 | secondByte << 16 | thirdByte << 8 | fourthByte);
+        return ByteBuffer.wrap(source, offset, Integer.BYTES).getInt();
     }
 
     public static float byteAToFloatIEEE754(byte[] buffer, int offset) {
-        if (buffer.length < (offset + LENGTH_32)) {
-            throw new IndexOutOfBoundsException();
-        }
-
-        byte[] number = Arrays.copyOfRange(buffer, offset, LENGTH_32);
-        int b1 = BYTE & number[offset];
-        int b2 = BYTE & number[offset + 1];
-        int b3 = BYTE & number[offset + 2];
-        int b4 = BYTE & number[offset + 3];
-
-        return (float) (b1 << 24 | b2 << 16 | b3 << 8 | b4);
+        return ByteBuffer.wrap(buffer, offset, Float.BYTES).getFloat();
     }
+
+//    public static float byteAToFloatIBM360(byte[] buffer, int offset) {
+//        final float ieee754fl = byteAToFloatIEEE754(buffer, offset);
+//
+//        return IBM360Converter.convert(ieee754fl);
+//    }
 }

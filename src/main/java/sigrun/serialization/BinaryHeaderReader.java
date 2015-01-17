@@ -5,7 +5,7 @@ import sigrun.common.*;
 import static sigrun.converters.ByteANumberConverter.*;
 
 @SuppressWarnings({"WeakerAccess", "ConstantConditions"})
-public class BinaryHeaderReader {
+public class BinaryHeaderReader extends AbstractReader {
     public final BinaryHeaderFormat format;
 
     public BinaryHeaderReader(BinaryHeaderFormat format) {
@@ -105,6 +105,8 @@ public class BinaryHeaderReader {
 
         if (format.numberOf3200ByteFormat != null)
             binaryHeader.setNumberOf3200Byte(byteAToShort(buffer, format.numberOf3200ByteFormat.posStart));
+
+        this.fireProgressEvent(buffer.length);
 
         return binaryHeader;
     }
