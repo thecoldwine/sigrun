@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @SuppressWarnings("UnusedDeclaration")
-public class TextHeaderReader {
+public class TextHeaderReader extends AbstractReader {
     private final static Logger log = LoggerFactory.getLogger(TextHeaderReader.class.getName());
 
     @SuppressWarnings("WeakerAccess")
@@ -29,6 +29,8 @@ public class TextHeaderReader {
             final String record = new String(buffer, offset, TextHeader.STRING_LENGTH, charset);
             records.add(record);
         }
+
+        this.fireProgressEvent(TextHeader.TEXT_HEADER_SIZE);
 
         return new TextHeader(records);
     }
