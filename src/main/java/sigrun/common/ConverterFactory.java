@@ -1,6 +1,7 @@
 package sigrun.common;
 
 import sigrun.converters.IBM360Converter;
+import sigrun.converters.IEEEConverter;
 import sigrun.converters.SeismicValuesConverter;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 

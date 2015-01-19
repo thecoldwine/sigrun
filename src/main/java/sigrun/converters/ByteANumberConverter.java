@@ -68,6 +68,7 @@ public final class ByteANumberConverter {
         int thirdByte = BYTE & source[offset + 2];
         int fourthByte = BYTE & source[offset + 3];
 
+
         return ((long) (firstByte << 24 | secondByte << 16 | thirdByte << 8 | fourthByte) & 0xFFFFFFFFL);
     }
 
@@ -116,10 +117,4 @@ public final class ByteANumberConverter {
     public static float byteAToFloatIEEE754(byte[] buffer, int offset) {
         return ByteBuffer.wrap(buffer, offset, Float.BYTES).getFloat();
     }
-
-//    public static float byteAToFloatIBM360(byte[] buffer, int offset) {
-//        final float ieee754fl = byteAToFloatIEEE754(buffer, offset);
-//
-//        return IBM360Converter.convert(ieee754fl);
-//    }
 }

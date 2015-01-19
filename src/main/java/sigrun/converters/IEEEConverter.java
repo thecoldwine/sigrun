@@ -1,4 +1,4 @@
-package sigrun.common;
+package sigrun.converters;
 
 import sigrun.converters.SeismicValuesConverter;
 
