@@ -9,7 +9,7 @@ import sigrun.serialization.TraceHeaderReader;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
-import java.nio.channels.FileChannel;
+import java.nio.channels.SeekableByteChannel;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -20,17 +20,15 @@ import java.util.Set;
  */
 public class SEGYStream implements Iterable<SeismicTrace> {
     private static final Logger log = LoggerFactory.getLogger(SEGYStream.class.getName());
-
+    private final SeekableByteChannel chan;
+    private final TraceHeaderReader traceHeaderReader;
     private TextHeader textHeader;
     private BinaryHeader binaryHeader;
     private long position = 0;
     private Set<ParseProgressListener> listeners = new HashSet<ParseProgressListener>();
-
-    private final FileChannel chan;
-    private final TraceHeaderReader traceHeaderReader;
     private SeismicTrace nextTrace;
 
-    protected SEGYStream(FileChannel chan,
+    protected SEGYStream(SeekableByteChannel chan,
                          TextHeaderReader textHeaderReader,
                          BinaryHeaderReader binaryHeaderReader,
                          TraceHeaderReader traceHeaderReader,
@@ -50,7 +48,7 @@ public class SEGYStream implements Iterable<SeismicTrace> {
         this.chan = chan;
     }
 
-    private void readTextHeader(FileChannel chan, TextHeaderReader textHeaderReader) throws IOException {
+    private void readTextHeader(SeekableByteChannel chan, TextHeaderReader textHeaderReader) throws IOException {
         ByteBuffer buf = ByteBuffer.allocate(TextHeader.TEXT_HEADER_SIZE);
 
         if (chan.read(buf) != TextHeader.TEXT_HEADER_SIZE) {
@@ -63,7 +61,7 @@ public class SEGYStream implements Iterable<SeismicTrace> {
         assert this.position == TextHeader.TEXT_HEADER_SIZE;
     }
 
-    private void readBinaryHeader(FileChannel chan, BinaryHeaderReader binaryHeaderReader) throws IOException {
+    private void readBinaryHeader(SeekableByteChannel chan, BinaryHeaderReader binaryHeaderReader) throws IOException {
         ByteBuffer buf = ByteBuffer.allocate(BinaryHeader.BIN_HEADER_LENGTH);
 
         if (chan.read(buf) != BinaryHeader.BIN_HEADER_LENGTH) {
@@ -85,6 +83,8 @@ public class SEGYStream implements Iterable<SeismicTrace> {
             }
 
             if (chan.read(traceBuf) != TraceHeader.TRACE_HEADER_LENGTH) {
+                log.info("Not enough bytes for next trace. Closing.");
+                chan.close();
                 return false;
             }
 
@@ -94,6 +94,8 @@ public class SEGYStream implements Iterable<SeismicTrace> {
             ByteBuffer dataBuf = ByteBuffer.allocate(dataLength);
 
             if (chan.read(dataBuf) != dataLength) {
+                log.info("Not enough bytes to read trace data. Looks like file is corrupted. Exiting.");
+                chan.close();
                 return false;
             }
 
