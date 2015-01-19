@@ -14,7 +14,7 @@ public class IEEEConverter implements SeismicValuesConverter {
             throw new IllegalArgumentException("Bytes array cannot be null");
         }
 
-        if ((bytes.length % Float.BYTES) != 0) {
+        if ((bytes.length % FLOAT_SIZE) != 0) {
             throw new IllegalArgumentException("Byte array has wrong length");
         }
 

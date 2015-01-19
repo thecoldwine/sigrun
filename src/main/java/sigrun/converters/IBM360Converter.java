@@ -63,11 +63,11 @@ public class IBM360Converter implements SeismicValuesConverter {
             throw new IllegalArgumentException("Bytes array cannot be null");
         }
 
-        if ((bytes.length % Integer.BYTES) != 0) {
+        if ((bytes.length % INT_SIZE) != 0) {
             throw new IllegalArgumentException("Byte array has wrong length");
         }
 
-        float[] result = new float[bytes.length / Integer.BYTES];
+        float[] result = new float[bytes.length / FLOAT_SIZE];
 
         IntBuffer bits = ByteBuffer.wrap(bytes).asIntBuffer();
         for (int i = 0; i < result.length; i++) {

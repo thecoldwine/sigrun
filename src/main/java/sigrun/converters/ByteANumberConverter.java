@@ -90,7 +90,7 @@ public final class ByteANumberConverter {
         if (offset < 0)
             throw new IllegalArgumentException("Offset cannot be less than zero");
 
-        return ByteBuffer.wrap(source, offset, Short.BYTES).getShort();
+        return ByteBuffer.wrap(source, offset, SeismicValuesConverter.SHORT_SIZE).getShort();
     }
 
     /**
@@ -111,10 +111,10 @@ public final class ByteANumberConverter {
         if (offset < 0)
             throw new IllegalArgumentException("Offset cannot be less than zero");
 
-        return ByteBuffer.wrap(source, offset, Integer.BYTES).getInt();
+        return ByteBuffer.wrap(source, offset, SeismicValuesConverter.INT_SIZE).getInt();
     }
 
     public static float byteAToFloatIEEE754(byte[] buffer, int offset) {
-        return ByteBuffer.wrap(buffer, offset, Float.BYTES).getFloat();
+        return ByteBuffer.wrap(buffer, offset, SeismicValuesConverter.FLOAT_SIZE).getFloat();
     }
 }
