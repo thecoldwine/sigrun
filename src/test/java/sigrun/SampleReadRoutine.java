@@ -4,9 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import sigrun.common.*;
 import sigrun.serialization.*;
-import sun.net.ProgressListener;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.nio.channels.FileChannel;
@@ -81,6 +79,8 @@ public class SampleReadRoutine {
                     makeBinHeaderFormat(),
                     makeTraceHeaderFormat());
 
+            final long startTime = System.currentTimeMillis();
+
             SEGYStream segyStream = streamFactory.makeStream(chan, makeListenerSet());
 
             printTextHeader(segyStream.getTextHeader());
@@ -89,6 +89,9 @@ public class SampleReadRoutine {
             for (SeismicTrace trace : segyStream) {
                 printTraceInfo(trace);
             }
+
+            final long timeEnd = System.currentTimeMillis() - startTime;
+            System.out.println("Parsing took: " + timeEnd + " ms.");
         } catch (FileNotFoundException e) {
             logger.error(e.getLocalizedMessage());
             System.exit(2);
