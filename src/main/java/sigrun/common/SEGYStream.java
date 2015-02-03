@@ -22,6 +22,7 @@ public class SEGYStream implements Iterable<SeismicTrace> {
     private static final Logger log = LoggerFactory.getLogger(SEGYStream.class.getName());
     private final FileChannel chan;
     private final TraceHeaderReader traceHeaderReader;
+    private final long totalSize;
     private TextHeader textHeader;
     private BinaryHeader binaryHeader;
     private long position = 0;
@@ -46,6 +47,13 @@ public class SEGYStream implements Iterable<SeismicTrace> {
 
         this.traceHeaderReader = traceHeaderReader;
         this.chan = chan;
+
+        try {
+            this.totalSize = chan.size();
+        } catch (IOException e) {
+            log.error(e.getLocalizedMessage());
+            throw new SEGYStreamException(e);
+        }
     }
 
     private void readTextHeader(FileChannel chan, TextHeaderReader textHeaderReader) throws IOException {
@@ -144,6 +152,10 @@ public class SEGYStream implements Iterable<SeismicTrace> {
 
     public long getPosition() {
         return this.position;
+    }
+
+    public long getTotalSize() {
+        return this.totalSize;
     }
 
     @Override

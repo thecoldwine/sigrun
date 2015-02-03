@@ -3,7 +3,6 @@ package sigrun.common;
 import sigrun.converters.IBM360Converter;
 import sigrun.converters.IEEEConverter;
 import sigrun.converters.SeismicValuesConverter;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
  * Created by maksenov on 16/01/15.
@@ -16,7 +15,7 @@ public class ConverterFactory {
             case IEEE_FP:
                 return new IEEEConverter();
             default:
-                throw new NotImplementedException();
+                throw new UnsupportedOperationException("Converter is not implemented yet");
         }
     }
 }
