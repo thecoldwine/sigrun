@@ -142,6 +142,10 @@ public class SEGYStream implements Iterable<SeismicTrace> {
         return binaryHeader;
     }
 
+    public long getPosition() {
+        return this.position;
+    }
+
     @Override
     public Iterator<SeismicTrace> iterator() {
         return new SeismicTraceIterator(this);
@@ -180,7 +184,7 @@ public class SEGYStream implements Iterable<SeismicTrace> {
          */
         @Override
         public void remove() {
-
+            throw new UnsupportedOperationException("Operation is not supported");
         }
     }
 }
