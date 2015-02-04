@@ -7,6 +7,7 @@ import sigrun.serialization.SEGYFormatException;
 import sigrun.serialization.TextHeaderReader;
 import sigrun.serialization.TraceHeaderReader;
 
+import java.io.Closeable;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
@@ -18,7 +19,7 @@ import java.util.Set;
 /**
  * Created by maksenov on 15/01/15.
  */
-public class SEGYStream implements Iterable<SeismicTrace> {
+public class SEGYStream implements Iterable<SeismicTrace>, Closeable {
     private static final Logger log = LoggerFactory.getLogger(SEGYStream.class.getName());
     private final FileChannel chan;
     private final TraceHeaderReader traceHeaderReader;
@@ -198,5 +199,9 @@ public class SEGYStream implements Iterable<SeismicTrace> {
         public void remove() {
             throw new UnsupportedOperationException("Operation is not supported");
         }
+    }
+
+    public void close() throws IOException {
+        this.chan.close();
     }
 }
