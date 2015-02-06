@@ -13,7 +13,7 @@ import static sigrun.converters.ByteANumberConverter.*;
 
 @SuppressWarnings("ConstantConditions")
 public class TraceHeaderReader {
-    private final static Logger log = LoggerFactory.getLogger(TraceHeaderReader.class.getName());
+    private final static Logger log = LoggerFactory.getLogger(TraceHeaderReader.class);
 
     @SuppressWarnings("WeakerAccess")
     public final TraceHeaderFormat format;

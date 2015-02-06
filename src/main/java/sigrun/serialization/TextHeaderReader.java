@@ -10,7 +10,7 @@ import java.util.List;
 
 @SuppressWarnings("UnusedDeclaration")
 public class TextHeaderReader extends AbstractReader {
-    private final static Logger log = LoggerFactory.getLogger(TextHeaderReader.class.getName());
+    private final static Logger log = LoggerFactory.getLogger(TextHeaderReader.class);
 
     @SuppressWarnings("WeakerAccess")
     public final Charset charset;

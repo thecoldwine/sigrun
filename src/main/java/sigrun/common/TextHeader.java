@@ -8,7 +8,7 @@ import java.util.List;
 
 @SuppressWarnings("UnusedDeclaration")
 public class TextHeader {
-    private static final Logger log = LoggerFactory.getLogger(TextHeader.class.getName());
+    private static final Logger log = LoggerFactory.getLogger(TextHeader.class);
 
     public static final int STRING_LENGTH = 80;
     public static final int RECORDS_AMOUNT = 40;

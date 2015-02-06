@@ -2,18 +2,17 @@ package sigrun.serialization;
 
 import sigrun.common.ParseProgressListener;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by maksenov on 14/01/15.
  */
 public abstract class AbstractReader {
-    protected final Deque<ParseProgressListener> listeners = new ArrayDeque<ParseProgressListener>();
+    protected final Set<ParseProgressListener> listeners = new HashSet<ParseProgressListener>();
 
     protected synchronized void registerParseProgressListener(ParseProgressListener listener) {
-        if (!listeners.contains(listener))
-            this.listeners.addLast(listener);
+        this.listeners.add(listener);
     }
 
     protected synchronized void unregisterParseProgressListener(ParseProgressListener listener) {

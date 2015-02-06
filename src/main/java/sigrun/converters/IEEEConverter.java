@@ -1,8 +1,7 @@
 package sigrun.converters;
 
-import sigrun.converters.SeismicValuesConverter;
-
 import java.nio.ByteBuffer;
+import java.nio.FloatBuffer;
 
 /**
  * Created by maksenov on 17/01/15.
@@ -18,6 +17,14 @@ public class IEEEConverter implements SeismicValuesConverter {
             throw new IllegalArgumentException("Byte array has wrong length");
         }
 
-        return ByteBuffer.wrap(bytes).asFloatBuffer().array();
+        float[] result = new float[bytes.length / FLOAT_SIZE];
+
+        FloatBuffer floatBuffer = ByteBuffer.wrap(bytes).asFloatBuffer();
+
+        for (int i = 0; i < result.length; i++) {
+            result[i] = floatBuffer.get();
+        }
+
+        return result;
     }
 }

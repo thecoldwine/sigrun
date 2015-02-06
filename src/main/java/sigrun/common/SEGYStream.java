@@ -20,7 +20,7 @@ import java.util.Set;
  * Created by maksenov on 15/01/15.
  */
 public class SEGYStream implements Iterable<SeismicTrace>, Closeable {
-    private static final Logger log = LoggerFactory.getLogger(SEGYStream.class.getName());
+    private static final Logger log = LoggerFactory.getLogger(SEGYStream.class);
     private final FileChannel chan;
     private final TraceHeaderReader traceHeaderReader;
     private final long totalSize;
