@@ -119,5 +119,6 @@ public class SampleReadRoutine {
 
         System.out.println("Size of array: " + trace.getValues().length);
         System.out.printf("Values: %.10f : %.10f%n", trace.getMin(), trace.getMax());
+        System.out.printf("Diff: %.10f%n", trace.getMax() - trace.getMin());
     }
 }

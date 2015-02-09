@@ -1,7 +1,6 @@
 package sigrun.converters;
 
 import java.nio.ByteBuffer;
-import java.nio.IntBuffer;
 
 /**
  * Class that converts IBM360 single precision floating point to IEEE 754 floating point.
@@ -69,9 +68,9 @@ public class IBM360Converter implements SeismicValuesConverter {
 
         float[] result = new float[bytes.length / FLOAT_SIZE];
 
-        IntBuffer bits = ByteBuffer.wrap(bytes).asIntBuffer();
+        ByteBuffer bits = ByteBuffer.wrap(bytes);
         for (int i = 0; i < result.length; i++) {
-            result[i] = Float.intBitsToFloat(convert(bits.get()));
+            result[i] = Float.intBitsToFloat(convert(bits.getInt()));
         }
 
         return result;
