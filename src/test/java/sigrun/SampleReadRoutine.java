@@ -9,7 +9,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.nio.channels.FileChannel;
 import java.nio.charset.Charset;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -119,6 +118,6 @@ public class SampleReadRoutine {
         System.out.println("Number of samples: " + trace.getHeader().getNumberOfSamples());
 
         System.out.println("Size of array: " + trace.getValues().length);
-        System.out.println("Values: " + trace.getValues()[0] + " " + trace.getValues()[1]);
+        System.out.printf("Values: %.10f : %.10f%n", trace.getMin(), trace.getMax());
     }
 }

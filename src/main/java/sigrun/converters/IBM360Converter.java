@@ -11,7 +11,7 @@ public class IBM360Converter implements SeismicValuesConverter {
     public static final int IBM_EXPO_MASK = 0x7F000000;
     public static final int IBM_FRAC_MASK = 0x00FFFFFF;
 
-    public static float convert(int bits) {
+    public static int convert(int bits) {
         int to;
 
         int sign;
@@ -71,7 +71,7 @@ public class IBM360Converter implements SeismicValuesConverter {
 
         IntBuffer bits = ByteBuffer.wrap(bytes).asIntBuffer();
         for (int i = 0; i < result.length; i++) {
-            result[i] = convert(bits.get());
+            result[i] = Float.intBitsToFloat(convert(bits.get()));
         }
 
         return result;
