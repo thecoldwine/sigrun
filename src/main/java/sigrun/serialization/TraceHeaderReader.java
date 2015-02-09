@@ -9,11 +9,12 @@ import sigrun.common.TraceIdentificationCode;
 
 import java.util.Arrays;
 
-import static sigrun.converters.ByteANumberConverter.*;
+import static sigrun.converters.ByteANumberConverter.byteAToInt;
+import static sigrun.converters.ByteANumberConverter.byteAToShort;
 
 @SuppressWarnings("ConstantConditions")
 public class TraceHeaderReader {
-    private final static Logger log = LoggerFactory.getLogger(TraceHeaderReader.class);
+    private final static Logger log = LoggerFactory.getLogger(TraceHeaderReader.class.getName());
 
     @SuppressWarnings("WeakerAccess")
     public final TraceHeaderFormat format;

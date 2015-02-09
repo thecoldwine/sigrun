@@ -2,7 +2,6 @@ package sigrun.common;
 
 import sigrun.serialization.*;
 
-import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.nio.channels.FileChannel;
 import java.nio.charset.Charset;

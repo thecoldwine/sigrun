@@ -1,7 +1,5 @@
 package sigrun.common;
 
-import java.util.Arrays;
-
 @SuppressWarnings("UnusedDeclaration")
 public class BinaryHeader {
     public static final int BIN_HEADER_LENGTH = 400;
