@@ -3,7 +3,6 @@ package sigrun.reports;
 import sigrun.common.BinaryHeader;
 import sigrun.common.TextHeader;
 import sigrun.common.TraceHeader;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -37,6 +36,6 @@ public class NavigationStrategy extends ReportStrategy {
 
     @Override
     public void printHeader(OutputStream outputStream) throws IOException {
-        throw new NotImplementedException();
+        throw new UnsupportedOperationException("NavigationStrategy.printHeader not yet implemented.");
     }
 }
