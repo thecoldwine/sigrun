@@ -4,6 +4,8 @@ import sigrun.common.TraceHeader;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.Formatter;
+import java.util.Locale;
 
 @SuppressWarnings("UnusedDeclaration")
 public class PetrobankNavigationStrategy extends ReportStrategy {
@@ -28,15 +30,16 @@ public class PetrobankNavigationStrategy extends ReportStrategy {
 
     @Override
     public void processTraceHeader(TraceHeader traceHeader, OutputStream outputStream) throws IOException {
-        String result = String.format(NAVIGATION_FORMAT,
+    	
+    	Formatter formatter = new Formatter(outputStream,"UTF-8", Locale.getDefault());
+    	formatter.format(NAVIGATION_FORMAT,
                 RECORD_PREFIX,
                 counter++,
                 traceHeader.getSourceX(),
                 traceHeader.getSourceY(),
                 getShotPointNumber(traceHeader),
                 binaryHeader.getLineNumber());
-
-        outputStream.write(result.getBytes("UTF-8"));
+    	formatter.flush();
     }
 
     private int getShotPointNumber(TraceHeader traceHeader) {
