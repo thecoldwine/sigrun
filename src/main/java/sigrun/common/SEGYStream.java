@@ -23,15 +23,16 @@ public class SEGYStream implements Iterable<SeismicTrace>, Closeable {
     private static final Logger log = LoggerFactory.getLogger(SEGYStream.class);
 	private final ReadableByteChannel chan;
     private final TraceHeaderReader traceHeaderReader;
-	private long totalSize;
     private TextHeader textHeader;
     private BinaryHeader binaryHeader;
     private long position = 0;
     private Set<ParseProgressListener> listeners = new HashSet<ParseProgressListener>();
     private SeismicTrace nextTrace;
 
-	protected SEGYStream(ReadableByteChannel chan, TextHeaderReader textHeaderReader,
-			BinaryHeaderReader binaryHeaderReader, TraceHeaderReader traceHeaderReader,
+	protected SEGYStream(ReadableByteChannel chan,
+                         TextHeaderReader textHeaderReader,
+                         BinaryHeaderReader binaryHeaderReader,
+                         TraceHeaderReader traceHeaderReader,
                          Collection<ParseProgressListener> listeners) {
         this.position = 0;
         this.listeners.addAll(listeners);
@@ -144,10 +145,6 @@ public class SEGYStream implements Iterable<SeismicTrace>, Closeable {
 
     public long getPosition() {
         return this.position;
-    }
-
-    public long getTotalSize() {
-        return this.totalSize;
     }
 
     @Override
