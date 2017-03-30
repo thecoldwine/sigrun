@@ -17,7 +17,7 @@ public enum TraceSorting {
     private final short code;
     private final String description;
 
-    private TraceSorting(short code, String description) {
+    TraceSorting(short code, String description) {
         this.description = description;
         this.code = code;
     }

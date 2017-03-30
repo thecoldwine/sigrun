@@ -31,16 +31,16 @@ public class PetrobankNavigationStrategy extends ReportStrategy {
 
     @Override
     public void processTraceHeader(TraceHeader traceHeader, OutputStream outputStream) throws IOException {
-    	
-    	Formatter formatter = new Formatter(outputStream,"UTF-8", Locale.getDefault());
-    	formatter.format(NAVIGATION_FORMAT,
+
+        Formatter formatter = new Formatter(outputStream, "UTF-8", Locale.getDefault());
+        formatter.format(NAVIGATION_FORMAT,
                 RECORD_PREFIX,
                 counter++,
                 traceHeader.getSourceX(),
                 traceHeader.getSourceY(),
                 getShotPointNumber(traceHeader),
                 binaryHeader.getLineNumber());
-    	formatter.flush();
+        formatter.flush();
     }
 
     private int getShotPointNumber(TraceHeader traceHeader) {

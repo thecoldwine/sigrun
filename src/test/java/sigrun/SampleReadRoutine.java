@@ -13,9 +13,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- *
- *
- *
  * Created by maksenov on 17/01/15.
  */
 public class SampleReadRoutine {

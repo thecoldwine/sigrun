@@ -2,7 +2,8 @@ package sigrun.serialization;
 
 import sigrun.common.*;
 
-import static sigrun.converters.ByteANumberConverter.*;
+import static sigrun.converters.ByteANumberConverter.byteAToInt;
+import static sigrun.converters.ByteANumberConverter.byteAToShort;
 
 @SuppressWarnings({"WeakerAccess", "ConstantConditions"})
 public class BinaryHeaderReader extends AbstractReader {

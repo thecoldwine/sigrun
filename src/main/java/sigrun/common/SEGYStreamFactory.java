@@ -10,7 +10,6 @@ import java.util.Collection;
 import java.util.Collections;
 
 /**
- *
  * Created by maksenov on 15/01/15.
  */
 public class SEGYStreamFactory {
@@ -31,8 +30,8 @@ public class SEGYStreamFactory {
     }
 
     public static SEGYStreamFactory create(final Charset charset,
-                                    final BinaryHeaderFormat binaryHeaderFormat,
-                                    final TraceHeaderFormat traceHeaderFormat) {
+                                           final BinaryHeaderFormat binaryHeaderFormat,
+                                           final TraceHeaderFormat traceHeaderFormat) {
         return new SEGYStreamFactory(charset, binaryHeaderFormat, traceHeaderFormat);
     }
 
