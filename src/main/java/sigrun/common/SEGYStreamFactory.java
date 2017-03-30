@@ -1,5 +1,6 @@
 package sigrun.common;
 
+import sigrun.formats.SEGYRevision;
 import sigrun.serialization.*;
 
 import java.io.FileInputStream;
@@ -23,6 +24,10 @@ public class SEGYStreamFactory {
         this.textHeaderReader = new TextHeaderReader(charset);
         this.binaryHeaderReader = new BinaryHeaderReader(binaryHeaderFormat);
         this.traceHeaderReader = new TraceHeaderReader(traceHeaderFormat);
+    }
+
+    public static SEGYStreamFactory create(final SEGYRevision revision) {
+        return create(revision.charset(), revision.binaryHeaderFormat(), revision.traceHeaderFormat());
     }
 
     public static SEGYStreamFactory create(final Charset charset,

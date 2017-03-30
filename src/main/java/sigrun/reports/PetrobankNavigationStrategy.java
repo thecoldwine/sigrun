@@ -7,6 +7,7 @@ import java.io.OutputStream;
 import java.util.Formatter;
 import java.util.Locale;
 
+@Deprecated
 @SuppressWarnings("UnusedDeclaration")
 public class PetrobankNavigationStrategy extends ReportStrategy {
     @SuppressWarnings("WeakerAccess")

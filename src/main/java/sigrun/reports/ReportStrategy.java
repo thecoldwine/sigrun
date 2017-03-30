@@ -7,6 +7,7 @@ import sigrun.common.TraceHeader;
 import java.io.IOException;
 import java.io.OutputStream;
 
+@Deprecated
 @SuppressWarnings({"SameParameterValue", "WeakerAccess", "UnusedDeclaration"})
 public abstract class ReportStrategy {
     public final static String DEFAULT_SEPARATOR = ",";

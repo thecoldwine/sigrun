@@ -6,6 +6,7 @@ import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
 
+@Deprecated
 @SuppressWarnings({"WeakerAccess", "UnusedDeclaration"})
 public class ReportMapFactory {
     public static <T> Map<String, Field> createReportMap(Class<T> clazz) {
