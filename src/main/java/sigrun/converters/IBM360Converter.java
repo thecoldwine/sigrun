@@ -32,8 +32,7 @@ public class IBM360Converter implements SeismicValuesConverter {
 
         exp = (exp << 2) - 130;
 
-        while (fraction > 0)
-        {
+        while (fraction > 0) {
             --exp;
             fraction <<= 1;
         }
