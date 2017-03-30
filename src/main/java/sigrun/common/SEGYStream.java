@@ -21,7 +21,7 @@ import java.util.Set;
  */
 public class SEGYStream implements Iterable<SeismicTrace>, Closeable {
     private static final Logger log = LoggerFactory.getLogger(SEGYStream.class);
-	private final ReadableByteChannel chan;
+    private final ReadableByteChannel chan;
     private final TraceHeaderReader traceHeaderReader;
     private TextHeader textHeader;
     private BinaryHeader binaryHeader;
@@ -29,7 +29,7 @@ public class SEGYStream implements Iterable<SeismicTrace>, Closeable {
     private Set<ParseProgressListener> listeners = new HashSet<ParseProgressListener>();
     private SeismicTrace nextTrace;
 
-	protected SEGYStream(ReadableByteChannel chan,
+    protected SEGYStream(ReadableByteChannel chan,
                          TextHeaderReader textHeaderReader,
                          BinaryHeaderReader binaryHeaderReader,
                          TraceHeaderReader traceHeaderReader,
@@ -49,7 +49,7 @@ public class SEGYStream implements Iterable<SeismicTrace>, Closeable {
         this.chan = chan;
     }
 
-	private void readTextHeader(ReadableByteChannel chan, TextHeaderReader textHeaderReader) throws IOException {
+    private void readTextHeader(ReadableByteChannel chan, TextHeaderReader textHeaderReader) throws IOException {
         ByteBuffer buf = ByteBuffer.allocate(TextHeader.TEXT_HEADER_SIZE);
 
         if (chan.read(buf) != TextHeader.TEXT_HEADER_SIZE) {
@@ -62,7 +62,7 @@ public class SEGYStream implements Iterable<SeismicTrace>, Closeable {
         assert this.position == TextHeader.TEXT_HEADER_SIZE;
     }
 
-	private void readBinaryHeader(ReadableByteChannel chan, BinaryHeaderReader binaryHeaderReader) throws IOException {
+    private void readBinaryHeader(ReadableByteChannel chan, BinaryHeaderReader binaryHeaderReader) throws IOException {
         ByteBuffer buf = ByteBuffer.allocate(BinaryHeader.BIN_HEADER_LENGTH);
 
         if (chan.read(buf) != BinaryHeader.BIN_HEADER_LENGTH) {
