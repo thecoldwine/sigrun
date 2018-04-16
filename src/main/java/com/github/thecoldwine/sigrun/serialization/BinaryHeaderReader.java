@@ -2,7 +2,6 @@ package com.github.thecoldwine.sigrun.serialization;
 
 import com.github.thecoldwine.sigrun.common.*;
 import com.github.thecoldwine.sigrun.converters.ByteANumberConverter;
-import sigrun.common.*;
 
 @SuppressWarnings({"WeakerAccess", "ConstantConditions"})
 public class BinaryHeaderReader extends AbstractReader {

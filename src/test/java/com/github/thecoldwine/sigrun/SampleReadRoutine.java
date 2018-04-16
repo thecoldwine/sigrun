@@ -4,8 +4,6 @@ import com.github.thecoldwine.sigrun.common.*;
 import com.github.thecoldwine.sigrun.serialization.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import sigrun.common.*;
-import sigrun.serialization.*;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

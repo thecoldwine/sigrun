@@ -2,7 +2,6 @@ package com.github.thecoldwine.sigrun.common;
 
 import com.github.thecoldwine.sigrun.serialization.*;
 import com.github.thecoldwine.sigrun.formats.SEGYRevision;
-import sigrun.serialization.*;
 
 import java.io.FileInputStream;
 import java.nio.channels.ReadableByteChannel;
