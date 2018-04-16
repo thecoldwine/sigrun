@@ -105,25 +105,6 @@
             </activation>
             <build>
                 <plugins>
-                    <!-- We want our release artifacts to be signed -->
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-gpg-plugin</artifactId>
-                        <version>1.5</version>
-                        <executions>
-                            <execution>
-                                <id>sign-artifacts</id>
-                                <phase>verify</phase>
-                                <goals>
-                                    <goal>sign</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                        <configuration>
-                            <useAgent>true</useAgent>
-                        </configuration>
-                    </plugin>
-
                     <!-- When releasing, do Source and JavaDoc jars too -->
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
