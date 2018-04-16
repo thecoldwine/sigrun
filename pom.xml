@@ -3,7 +3,7 @@
     <groupId>com.github.thecoldwine</groupId>
     <artifactId>sigrun</artifactId>
     <packaging>jar</packaging>
-    <version>0.4.4-SNAPSHOT</version>
+    <version>0.4.3-SNAPSHOT</version>
     <name>Sigrun SEGY parser</name>
     <url>https://github.com/thecoldwine/sigrun</url>
     <description>Pure SEG-Y parser library</description>
