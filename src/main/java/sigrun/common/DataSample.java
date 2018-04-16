@@ -47,9 +47,10 @@ public enum DataSample {
     }
 
     /**
+     * <p>
      * Creates a new instance of a DataSample class
      * from its code.
-     * <p/>
+     * </p>
      * The dependency between code and other format parameters described in ``Binary File Header'' section of
      * a SegY Standard rev 1.
      * @param code - Code for sample type
